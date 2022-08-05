@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .rect{
+            position: relative;
+            width: 800px;
+            height: 600px;
+            border: 1px salmon solid;
+            background-color: coral;
+        }
+
+        .ball{
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            color: coral;
+            background-color: aliceblue;
+            border: 2px rgb(255, 213, 208) solid;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+        }
+    </style>
+</head>
+<body>
+        <div class="rect">
+            <!-- <div class="ball">88</div> -->
+        </div>
+
+
+    <div id="info"></div>
+
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+        
+        // const info = $('#info'); // 設定參照(reference)
+
+        // const another = info; // 設定參照(reference)
+
+        // another.html(`<h2>Hello JS</h2>`)
+
+        const rect = $('.rect');
+
+        // // let n = 1
+        // for (let i = 0, n = 1; i < 10 ; i++) {
+
+        //     for(let k=0; k<5 ;k++, n++ ){
+        //         const b = $(`<div class="ball">${n}</div>`); //建立元素
+
+        //         b.css({left:k*70, top:i*70})
+        //         rect.append(b);
+                
+        //         // n++;
+        //     }
+
+        // }
+
+        for (let i = 0, n=1; i < 12 ; i++,n++) {
+            const x = i%4;
+            const y = parseInt(i/4);
+
+            // if(i>=7){
+            //     break; //離開迴圈
+            // }
+
+            if(i === 7){
+                continue; //略過該輪迴圈
+            }
+            const b = $(`<div class="ball">${n}</div>`); //建立元素
+
+                b.css({left:x*70, top:y*70})
+                rect.append(b);
+                
+
+                $(b).click(function () {
+            $(this).css('display','none')
+        })
+        }
+
+        
+
+        
+
+        // for(let x = 0;x<4 ;x++){
+        //     for(let y = 0;y<4 ;y++){
+        //         console.log(x,y);
+        //     }
+        // }
+
+
+
+
+        let a = 0;
+        b = a++
+        console.log(b);
+        console.log(b = a++);
+        console.log(b = a++);
+
+        a = 0;
+        b = ++a;
+        console.log(b);
+        console.log(b = ++a);
+        console.log(b = ++a);
+
+        //前置遞增 y=++x; //先做x=x+1, 再做y = x;
+        //後置遞增 y=x++; //先做y = x;, 再做x++;
+
+        //前置遞減 y=--x; //先做x=x-1, 再做y = x;
+        //後置遞減 y=x--; //先做y = x, 再做x=x-1;
+
+        //a++  ->>會先執行整個敘述後再將a的值加1
+        //++a  ->>先把a的值加1，再執行整個敘述
+
+
+    </script>
+</body>
+</html>
