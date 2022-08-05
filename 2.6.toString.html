@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="info"></div>
+    &lt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;
+    <!-- <     > -->
+    <!-- &lt;是< -->
+    <!-- &gt;是> -->
+
+
+
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+        const info = $('#info');
+        let n = 255;
+        let s = 'ab';
+
+        info.append( n.toString(16) + '<br>'); //FF
+        info.append( parseInt(s, 16) + '<br>'); //171
+
+        const name = 'Shinder';
+        const str = `Hello, ${name}`;
+        $('#info').text(str)
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="info"></div>
+
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+        const info = $('#info');
+        const str = 'a陳bcd陳陳ekusdfhk陳陳陳陳'
+
+        console.log(str.split("")[7]);
+
+        info.append(str.charAt(0) + '<br>')
+        info.append(str.charCodeAt(0) + '<br>')
+        info.append(str.charAt(1) + '<br>')
+        info.append(str.charCodeAt(1) + '<br>')
+        info.append(String.fromCharCode(38515) + '<br>')
+
+        info.append(str.indexOf('a') + '<br>')
+        info.append(str.indexOf('陳') + '<br>')
+        console.log(str.indexOf('陳', 12 ))// 12之後第一個陳在16
+        // info.append(str.lastIndexOf('陳') + '<br>') // 5
+        info.append(str.indexOf('林') + '<br>') //找不到時 -1
+
+        info.append(str.split('陳').join('') + '<br>') //刪掉陳改成空
+        info.append(str.split('陳').join('李') + '<br>') //刪掉陳改成李
+        // info.append(str.split('').join('-') + '<br>') //在每個字中間加-
+
+
+    </script>
+</body>
+</html>

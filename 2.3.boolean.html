@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+        // let a = 5,
+        //     b = 8,
+        //     c = '5';
+
+        // console.log(a > b);
+        // console.log(a < b);
+        // console.log(a === b);
+        // console.log(a === c);
+        // // === false 嚴謹 (自動型別轉換 casting)
+        // console.log(a == c);
+        // // == true
+
+        // console.log(!! 0); //false
+        // console.log(!! undefined); //false
+        // console.log(!! null); //false
+        // console.log(!! NaN); //false
+
+        // console.log( 3 && 2 ); //2
+        // console.log( 0 && 2 ); //0
+
+        let a, b;
+
+        b = 0 && (a = 7); // b = 後面那一串東西
+        console.log(a, b); // undefined, 0
+
+        // a = undefined;
+        // b = undefined;
+
+        b = 1 && (a = 7);
+        console.log(a, b); // 7, 7
+
+        /**三元運算子
+         * 運算子優先權
+         * 單元>算術>關係>邏輯>設定
+         * (判斷式)?(真實回傳值):(偽時回傳值)
+        */
+        console.log(5 > 8? 'a':'b'); // b
+    </script>
+</body>
+</html>

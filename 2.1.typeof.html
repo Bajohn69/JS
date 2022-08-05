@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="info">my info</div>
+
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+        
+        // typeof 單元運算子
+        const info =$('#info')
+        const info2 = document.querySelector('#info')
+
+        console.log(typeof 6 + '<br>');
+        console.log(typeof true + '<br>');
+        console.log(typeof 'shin' + '<br>');
+        console.log(typeof null + '<br>');
+        console.log(typeof undefined + '<br>');
+        console.log(typeof alert  + '<br>'); //查看 funtion 的參照
+
+        console.log(typeof info + '<br>');
+        console.log(info2.constructor.name + '<br>');
+
+    </script>
+</body>
+</html>
