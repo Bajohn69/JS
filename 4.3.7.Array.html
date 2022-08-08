@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="info"></div>
+
+
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+        const info = $('#info');
+        const str = 'ab  cdefghi';
+        const ar = str.split('');
+        let br = [...ar];
+
+        info.append(br.splice(2, 3) + '<br>') //在索引 2 的位置移除 3 個元素
+        info.append(br + '<br>')
+        info.append('-------------------<br>');
+
+        br = [...ar];
+        info.append(br.splice(2, 0, 12, 34) + '<br>')
+        //這會印出空的陣列(因為 0 ，沒有移除任何元素( = 移出 0 個元素))
+        //然後在索引 2 的位置插入 2 個元素，分別是12跟34 
+        info.append(br + '<br>')
+        info.append('-------------------<br>');
+
+        br = [...ar];
+        info.append(br.splice(2, 2, 12, 34) + '<br>') //取代
+        info.append(br + '<br>')
+        info.append('-------------------<br>');
+        
+
+
+    </script>
+</body>
+</html>

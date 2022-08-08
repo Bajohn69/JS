@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="info"></div>
+
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+        const info = $('#info');
+
+        info.append(plus(5, 20) + '<br>')
+        info.append(plus(5) + '<br>')
+        info.append(plus() + '<br>')
+
+        //傳統的函示定義，有堤升的效果
+        function plus(a = 0, b = 10) {
+            return a + b
+        }
+
+        //其餘運算子 rest operator
+        function a(...b) {
+        info.append(JSON.stringify(b) + '<br>')
+            
+        }
+
+        a(2, 4, 6);
+        a()
+
+
+        
+    </script>
+</body>
+</html>

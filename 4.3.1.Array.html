@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="info"></div>
+
+
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+        // ar = []
+        // ar = new Array() //舊的寫法
+        const info = $('#info');
+        const ar = [2, 6, 7, 'hello', true]
+
+
+        ar[9] = 'shin'; // **索引值最好是連續的
+        ar[-2] = 'der'; // **不要用奇奇怪怪的數字(正整數以外)
+        ar['hi'] = 'hello'; // **不要用奇奇怪怪的字(正整數以外)
+
+        // info.append( ar.length + '<br>') // 5
+        // info.append( ar + '<br>') // 2,6,7,hello,true 字串
+        // info.append( ar.toString() + '<br>') //2,6,7,hello,true 字串
+        // info.append( ar ) // 267hellotrue 陣列
+        // info.append( '<br>' ) // 267hellotrue
+
+        // console.log(ar);
+        // console.log(ar.toString() + '<br>');
+        // console.log(ar + '<br>');
+
+        console.log('最後一個元素值:',ar[ar.length - 1]); //最後一個元素值
+
+        info.append(ar.length + `<br>`) //抓最大索引值 +1，不是真正裡面有幾個
+        info.append(`----------------------<br>`)
+        
+        //不建議使用 for loop
+        for(let i = 0;i < ar.length ; i++){
+            info.append(`${i}: ${ar[i]}<br>`);
+        }
+        info.append(`----------------------<br>`)
+
+        // for in 迴圈
+        for(let s in ar){
+            info.append(`${s}: ${ar[s]}<br>`);
+        } 
+
+
+        info.append(`----------------------<br>`)
+        info.append(ar[2]+'<br>')
+        info.append(ar['2']+'<br>') //索引值給字串也可以
+
+    </script>
+</body>
+</html>

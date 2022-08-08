@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="info"></div>
+
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+        //json 可以表達資料，用來做資料交換(obj, array, element, string, number...)
+        //JSON它儲存的資料可以是字串、數字、布林[true、false]、陣列[array]、物件{object}等資料格式。它的資料格式最外層是用一個{ }（簡稱物件）包起來，下圖為JSON資料格式。
+        const info = $('#info');
+
+        const ar = [12, 99, 'aaa', ['bill', 25, 'male']];
+        const ar2 = [...ar];
+        const ar3 = JSON.parse(JSON.stringify(ar)); // 深層複製
+
+
+        ar[0] = 100;
+        ar[3][0] = 'Alex';
+
+        console.log(ar);
+        console.log(ar2); //沒有拷貝到全部
+
+        //深拷貝
+        console.log(ar2);
+        info.append(JSON.stringify(ar2) + '<br>');
+
+        console.log(ar3);
+        info.append(JSON.stringify(ar3) + '<br>');
+
+        
+    </script>
+</body>
+</html>

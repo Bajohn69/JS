@@ -17,17 +17,24 @@
         
         const info = $('#info')
         const p1 = {
-            name:'bill',
+            name:{
+                first:'John',
+                last:'Wick'
+            },
             age: 22,
             gender:'male',
         };
 
-        for(let s in p1){
-            info.append(`<p>${s}: ${p1[s]}</p>`)
-        }
-        // 只能用在obj
-        console.log('name' in p1); // p1 有沒有 'name' 這個 key
-        console.log('mobile' in p1); // p1 有沒有 'mobile' 這個 key
+        const {age, gender} = p1; //展開設定
+        const {name:{first, last}} = p1; //展開設定，撥開第二層
+
+        console.log({age: age, gender:gender}); //舊的語法(屬性名稱+屬性值)
+        console.log({age, gender}); // ES6 的寫法
+
+        console.log({name}); //name 不會拿到字，因為只有複製第二層
+        console.log({first, last}); //包裝成物件
+
+
 
 
     </script>

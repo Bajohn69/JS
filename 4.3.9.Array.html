@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red{
+            /* display: inline-block; */
+            color:red;
+            font-weight: 800;
+        }
+        .blue{
+            /* display: inline-block; */
+            color:blue;
+            font-weight: 400;
+        }
+    </style>
+</head>
+<body>
+    <div id="info"></div>
+
+
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+        const info = $('#info');
+
+        const ar = [12, 1, 3, 5, 2, 6, 8, 9, 12];
+
+        info.append(ar.toString() + '<br>');
+
+        //map()和filter()常常被稱為最好用的兩個陣列方法，之所以好用，有一個原因是我們可以任意要求對每個元素所做的事，無論是運算或是篩選，不只這樣，這兩個陣列都是會回傳回來一個新的陣列，且不會更動到原來的陣列，處理陣列時，可以拿這兩位兄弟做很多事情哩！
+
+        const ar2 = ar.filter(function (v) {
+            return v%2 === 0; ///用 filter 只篩選偶數
+        })
+
+        info.append(ar2.toString() + '<br>');
+
+        const ar3 = ar.map(function (v) {
+            const myClass = v%2 === 0 ? 'red':'blue';
+            return `<div class='${myClass}'>${v}</div>` //這可以幹嘛
+            // map() 方法會建立一個新的陣列，其內容為原陣列的每一個元素經由回呼函式運算後所回傳的結果之集合。
+        })
+
+        info.append(ar3);
+        console.log(ar3);
+
+    </script>
+</body>
+</html>
