@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>球球賽跑</title>
+    <style>
+        .rect{
+            position: relative;
+            width: 800px;
+            height: 600px;
+            background-color: gainsboro;
+        }
+
+        .ball{
+            position:absolute;
+            width: 40px;
+            height: 40px;
+            background-color: rgb(73, 94, 153);
+            border-radius: 50%;
+            top: 30px;
+        }
+
+        .ball2{
+            background-color: coral;
+            top: 100px;
+        }
+
+        .ball3{
+            background-color: rgb(166, 194, 103);
+            top: 170px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- <div id="info"></div> -->
+    <button onclick="myBegin()">begin</button>
+    <button onclick="myStop()">stop</button>
+    <div class="rect">
+        <div class="ball"></div>
+        <div class="ball ball2"></div>
+        <div class="ball ball3"></div>
+    </div>
+
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+        let iid;
+        const balls = $('.ball')
+
+        // function begin() {
+        //     iid = setInterval(() => {
+        //         ball.css('left','+=3');
+        //     },30);
+        // }
+
+        function myBegin() {
+            iid = setInterval(() => {
+                balls.each((i, el) =>{  //讓每個球跑不一樣
+                    $(el).css('left','+=' + (1 + parseInt(Math.random()*3)));
+                });
+            },30);
+        }
+
+        function myStop() {
+            clearInterval(iid);
+        }
+        //stop() 跟 begin() 為了不要跟 windows 衝突可以取名 myStop() 跟 myBegin()
+
+
+    </script>
+</body>
+</html>

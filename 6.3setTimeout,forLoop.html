@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>時間迴圈</title>
+</head>
+<body>
+
+    <div id="info"></div>
+    
+
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+        let a = '123'
+
+        // 每一秒印出一個 i (1, 2, 3, 4, 5, 6, 7)
+        for(let i = 0; i < 7; i++){
+            setTimeout(function () {
+                console.log(i);
+            },i*1000)
+        }
+
+        //用全域變數的話，會先執行所以結果會變成(7, 7, 7, 7, 7, 7, 7)
+        //要再加一個 n 
+        //用上面那個比較簡潔
+        let i;
+        let n = 0;
+
+        for( i = 0; i < 7; i++){
+            setTimeout(function () {
+                console.log(n++);
+            },i*1000)
+        }
+
+        console.log(a); // a 會比迴圈先執行
+
+
+    </script>
+</body>
+</html>

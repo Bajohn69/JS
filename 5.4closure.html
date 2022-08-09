@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>閉包</title>
+</head>
+<body>
+
+    <div id="info"></div>
+
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+        const info = $('#info')
+
+        const f = (function () {
+            let n =3;
+            return function (a) {
+                n--; //執行完三次就不做了
+                // if(n >= 0 ? a*a : null)
+                if(n >= 0){
+                    return a*a;
+                }else{
+                    return null;
+                }
+            }
+        })()
+
+        info.append(f(8) + '<br>')
+        info.append(f(7) + '<br>')
+        info.append(f(9) + '<br>')
+        info.append(f(5) + '<br>')
+    </script>
+</body>
+</html>

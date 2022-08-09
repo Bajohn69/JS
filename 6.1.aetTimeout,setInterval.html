@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="info"></div>
+
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+        const info = $('#info')
+    console.log(new Date());
+
+    setTimeout(function() {
+        console.log(new Date());
+        info.html('123');
+    },2000)
+    // 2 秒後觸發一次
+
+    setInterval(function() {
+        console.log(new Date());
+        info.html('123');
+    },2000)
+    // 每 2 秒觸發一次，一直觸發
+
+    //時鐘
+    setInterval(() => {
+        const now = new Date();
+        info.html(now.toString().split(' ')[4]);
+        //用 space 切開 這串的第五個 Tue Aug 09 2022 10:47:10 GMT+0800
+        //**若網頁很多動畫很吃效能時鐘會越不準
+    },1000)
+
+    </script>
+</body>
+</html>
