@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        .big-ball {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            background-color: rgb(197, 197, 197);
+            border-radius: 50%;
+            /* border: 1px solid black; */
+        }
+
+        .rect {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            /* border: 1px solid gray; */
+            background-color: #7d9a70;
+            left: 100px;
+            top: 100px;
+        }
+
+        .ball {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: rgb(160, 183, 208);
+            border-radius: 50%;
+            /* border: 1px solid black; */
+        }
+    </style>
+</head>
+<body>
+    <div class="big-ball">
+        <div class="rect">
+            <div class="ball"></div>
+        </div>
+    </div>
+    <!-- <div id="info"></div> -->
+
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+        const bigBall = document.querySelector('.big-ball');
+        const ball = document.querySelector('.ball');
+        const rect = document.querySelector('.rect');
+
+        const handler = (event)=>{
+            console.log(event.type);
+            console.log(event.target);
+        }
+
+
+        bigBall.addEventListener('mouseover', handler) // 前面那欄只能放小寫
+        bigBall.addEventListener('mouseout', handler)
+
+    </script>
+</body>
+</html>

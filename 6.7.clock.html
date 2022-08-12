@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        .clock{
+            position: relative;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background-color: rgb(241, 238, 215);
+        }
+
+        .hand{
+            position:absolute;
+            top: 300px;
+            left: 300px;
+        }
+
+        .sec-hand{
+            position:absolute;
+            width: 6px;
+            height: 300px;
+            background-color: rgb(106, 106, 106);
+            top: -300px;
+            left: -3px;
+            border-radius: 50px;
+
+        }
+
+        .min-hand{
+            position:absolute;
+            width: 10px;
+            height: 250px;
+            background-color: rgb(84, 84, 84);
+            top: -240px;
+            left: -5px;
+            border-radius: 50px;
+        }
+
+        .hr-hand{
+            position:absolute;
+            width: 16px;
+            height: 200px;
+            background-color: rgb(33, 33, 33);
+            top: -190px;
+            left: -8px;
+            border-radius: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- <div id="info"></div> -->
+    <div class="clock">
+        <div class="hand" id="sec-hand">
+            <div class="sec-hand"></div>
+        </div>
+        <div class="hand" id="min-hand">
+            <div class="min-hand"></div>
+        </div>
+        <div class="hand" id="hr-hand">
+            <div class="hr-hand"></div>
+        </div>
+
+    </div>
+
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+        const secHand = $('#sec-hand') //改變的是外面那層 div
+        const minHand = $('#min-hand') //改變的是外面那層 div
+        const hrHand = $('#hr-hand') //改變的是外面那層 div
+
+        // 1 sec = 6 deg
+        
+        // $(secHand).css('transform','rotate(30deg)')
+
+        function runClock() {
+            const now = new Date();
+            const sec = now.getSeconds();
+            const min = now.getMinutes();
+            const hr = now.getHours();
+            const msec = now.getMilliseconds();
+
+            
+            $(secHand).css('transform',`rotate(${sec*6 + msec*(6/1000)}deg)`); // 6 度除以 1000 毫秒
+            $(minHand).css('transform',`rotate(${min*6}deg)`);
+            $(hrHand).css('transform',`rotate(${hr*30 + min *.5}deg)`); // 要補差額，.5是 30 / 60  
+
+            setTimeout(runClock, 24); //這邊是 24 毫秒更新一次
+            // setTimeout(runClock, 1000);
+
+
+        }
+        runClock()
+        
+        
+
+
+    </script>
+</body>
+</html>

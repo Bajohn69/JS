@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+
+    <div id="info"></div>
+    
+
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+        const info = $('#info')
+        let n = 0
+
+        function run() {
+            info.html(`<h2>${n}</h2>`);
+
+            if(n < 10){
+                n++;
+            setTimeout(run, 500);
+            }
+        }
+
+        run()
+
+        // function run() {
+        //     info.html(`<h2>${n}</h2>`);
+
+        //     n++;
+        // }
+
+        // setInterval(run, 1000) //給他參照就好，不用呼叫
+
+        // const deadline = new Date('2022-10-14');
+        // const now = new Date()
+
+        // let ms = deadline - now; //兩個時間點相隔時間(msec)
+
+        // info.html(`<h2>還有${Math.round(ms / 86_400_000)}天</h2>`);
+
+    </script>
+</body>
+</html>

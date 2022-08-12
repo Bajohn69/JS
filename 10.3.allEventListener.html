@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        .big-ball {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            background-color: rgb(197, 197, 197);
+            border-radius: 50%;
+            /* border: 1px solid black; */
+        }
+
+        .rect {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            /* border: 1px solid gray; */
+            background-color: #7d9a70;
+            left: 100px;
+            top: 100px;
+        }
+
+        .ball {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: rgb(160, 183, 208);
+            border-radius: 50%;
+            /* border: 1px solid black; */
+        }
+    </style>
+</head>
+<body>
+    <div class="big-ball">
+        <div class="rect">
+            <div class="ball"></div>
+        </div>
+    </div>
+    <!-- <div id="info"></div> -->
+
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+        const bigBall = document.querySelector('.big-ball');
+        const ball = document.querySelector('.ball');
+
+        const handler = ()=>{
+            console.log('789');
+        }
+
+        bigBall.addEventListener('click', function(event){
+            console.log('123');
+        });
+
+        bigBall.addEventListener('click', function(event){
+            console.log('456');
+        });
+        //上面可以重複監聽
+
+        bigBall.addEventListener('click', handler);
+        bigBall.addEventListener('click', handler); // 但這樣不會有效果
+        bigBall.addEventListener('click', handler); // 不會有效果
+
+        ball.addEventListener('click', handler);
+    </script>
+</body>
+</html>

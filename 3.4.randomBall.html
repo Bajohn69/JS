@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .rect{
+            position: relative;
+            width: 800px;
+            height: 600px;
+            /* border: 1px salmon solid; */
+            background-color: rgb(196, 198, 220);
+        }
+
+        .ball{
+            position: absolute;
+            /* width: 50px;
+            height: 50px; */
+            color: coral;
+            /* background-color: aliceblue; */
+            /* border: 2px rgb(255, 213, 208) solid; */
+            box-shadow: 0px 0px 5px rgba(39, 39, 39, 0.267);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+        }
+    </style>
+</head>
+<body>
+        <div class="rect">
+            <!-- <div class="ball">88</div> -->
+        </div>
+
+
+    <div id="info"></div>
+
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+        const rect = $('.rect');
+        const balls = [];
+
+        function randomColor() {
+            let c = '00000' + Math.floor(256 * 256  * Math.random()).toString(16);
+            return '#' + c.slice(c.length - 6)
+        }
+
+        for(let i = 0; i < 100; i++){
+            const b = $(`<div class="ball"></div>`);
+            const left = Math.floor(800*Math.random());
+            const top = Math.floor(600*Math.random());
+            const size = 20 + Math.floor(21*Math.random()); // Math.floor(21*Math.random()) 最小是 1 ，最大是 20
+            // const h = Math.floor(360*Math.random());
+
+            b.css({
+            left,
+            top, 
+            width: size,
+            height: size,
+            backgroundColor: randomColor(), //`hsl(${h},50%,50%)`,
+            })
+            rect.append(b);
+            balls.push(b);
+            
+        }
+
+        function doRun () {
+            balls.forEach((b) => {
+                const dx = Math.floor(5*Math.random())-2;
+                const dy = Math.floor(5*Math.random())-2; // 1, 2, 3
+                b.css('top','+=' + dy) // dy 是 delta Y
+                b.css('left','+=' + dx) 
+            })
+
+            setTimeout(doRun, 30)
+            
+
+        }
+
+        doRun();
+        
+
+
+
+    </script>
+</body>
+</html>

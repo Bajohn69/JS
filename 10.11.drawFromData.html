@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+
+        .rect {
+            position: relative;
+            width: 800px;
+            height: 600px;
+            /* border: 1px solid gray; */
+            background-color: #cccccc;
+            /* left: 100px;
+            top: 100px; */
+        }
+
+        .ball {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: rgb(51, 62, 74);
+            border-radius: 50%;
+            pointer-events: none;
+            /* 不感應滑鼠動作 */
+            /* border: 1px solid black; */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="rect">
+        <!-- <div class="ball"></div> -->
+    </div>
+
+    <!-- <div id="info"></div> -->
+
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <SCRipt src="./data/data.js"></SCRipt>
+    <script>
+        const rect = $('.rect');
+
+        function drawBall({x, y, bgc, size}) {
+            const b = $(`<div class="ball"></div>`);
+            b.css({
+                backgroundColor: bgc,
+                width: size,
+                height: size,
+                left: x, 
+                top: y
+            });
+            rect.append(b);
+        }
+
+        let i = 0;
+        function doRun() {
+            if(data[i]){
+                drawBall(data[i]);
+                setTimeout(doRun, 10);
+                i++;
+            }
+        }
+        doRun();
+
+
+
+
+    </script>
+</body>
+</html>

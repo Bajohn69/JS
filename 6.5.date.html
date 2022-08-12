@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+
+    <!-- <div id="info"></div> -->
+    <input id="mydate1" type="date">
+    <br>
+    <input id="mydate2" type="datetime"> //這個沒用
+    <br>
+    <input id="mydate3" type="datetime-local" onchange="showInfo">
+    
+
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+        const info = $('#info')
+        
+        function showInfo() {
+            let str = $('#mydate1').val() + '<br>' + $('mydate3').val() + '<br>';
+
+            info.html(str)
+        }
+
+    </script>
+</body>
+</html>

@@ -21,29 +21,34 @@
             // ar.unshift(i);
         }
 
-        info.append(ar.toString() + `<br>`);
-        const ar2 = [...ar];
-        ar2.reverse(); //順序相反
+        ar.sort( () => Math.random()-.5); // 樂透隨機排序
+        info.append('本期開獎號碼', ar.toString() + `<br>`)
 
-        info.append(ar2.toString() + `<br>`)
+        // info.append(ar.toString() + `<br>`);
+        // const ar2 = [...ar];
+        // ar2.reverse(); //順序相反
 
-        console.log(ar.concat(ar2));  // concat 是串連
-        console.log(ar.concat());   //也是單層複製
+        // info.append(ar2.toString() + `<br>`)
 
-        console.log(ar.indexOf(42)); //41 //看他的位置
-        console.log(ar.includes(42)); //true //看他有沒有包含這個元素
+        // console.log(ar.concat(ar2));  // concat 是串連
+        // console.log(ar.concat());   //也是單層複製
+
+        // console.log(ar.indexOf(42)); //41 //看他的位置
+        // console.log(ar.includes(42)); //true //看他有沒有包含這個元素
         
 
-        console.log('a'>'b');//false
-        console.log('aaaa'>'b');//false 因為比第一個就是false了
+        // console.log('a'>'b');//false
+        // console.log('aaaa'>'b');//false 因為比第一個就是false了
 
-        ar.sort(); //預設的情況是以'字串'為排序
-        info.append(ar.toString() + '<br>');
+        // ar.sort(); //預設的情況是以'字串'為排序
+        // info.append(ar.toString() + '<br>');
 
-        const ar3 = '不怕面對改變，敢於挑戰不熟悉的事物'.split('');//中文字是以部首排序
-        console.log(ar3.sort());
+        // const ar3 = '不怕面對改變，敢於挑戰不熟悉的事物'.split('');//中文字是以部首排序
+        // console.log(ar3.sort());
         
-        info.append(ar3.toString() + '<br>');
+        // info.append(ar3.toString() + '<br>');
+
+
 
 
     </script>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    
+</head>
+<body>
+    <button onclick="myClick(event)">Click me!</button>
+    <!-- 這邊的 event 不能亂寫是固定的 -->
+    <!-- <div id="info"></div> -->
+
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+        const btn = document.querySelector('button');
+
+        function myClick(abc) {
+            console.log('123');
+            console.log(abc);
+        }
+        
+
+        // 會蓋掉之前的設定
+        // btn.onclick = function (e) {  // 這邊的 event 是自己命名可以亂寫
+        //     console.log('456');
+        //     console.log(e);
+        // }
+    </script>
+</body>
+</html>

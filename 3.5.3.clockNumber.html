@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .rect{
+            position: relative;
+            width: 800px;
+            height: 600px;
+            border: 1px salmon solid;
+            background-color: coral;
+        }
+
+        .ball{
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            color: salmon;
+            background-color: aliceblue;
+            border: 2px rgb(255, 213, 208) solid;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            transition: .3s ease-in-out;
+        }
+
+        .bigBall{
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            color: #fff;
+            background-color: salmon;
+            border: 2px rgb(255, 213, 208) solid;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 80px;
+            left:360px;
+            top:260px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+        <div class="rect">
+            <div class="bigBall">click</div>
+        </div>
+
+
+    <div id="info"></div>
+
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+
+        const rect = $('.rect');
+        const bigBall = $('.bigBall');
+
+        const ballNum = 12;
+        const angUnit = Math.PI*2/ballNum ; //算球跟球之間的角度
+        const balls = [];
+
+        let isOpened = false; // 一開始是收合的狀態
+
+        for(let i = 0; i < ballNum ; i++){
+            const b = $(`<div class="ball">${i+1}</div>`);
+
+            b.css({
+                left: 400 - 25,
+                top: 300 - 25,  //25是小球的半徑
+            });
+
+                balls.push({
+                    el:b,
+                    bX: 400 - 25, //Begin(X, Y)
+                    bY: 300 - 25,
+                    eX: 400 - 25 + 200 * Math.cos(i * angUnit - Math.PI/3), //End(X, Y)
+                    eY: 300 - 25 + 200 * Math.sin(i * angUnit - Math.PI/3),
+                });
+                rect.append(b)
+            }
+            rect.append(bigBall)
+
+            bigBall.on('click', function () {
+                isOpened = !isOpened; // 點了開啟，再點一次收合
+                
+                balls.forEach(function(obj, i){
+                    let tX, tY; // target(X, Y)
+                    if(isOpened){
+                        tX = obj.eX;
+                        tY = obj.eY;
+                    }else{
+                        tX = obj.bX;
+                        tY = obj.bY;
+                    }
+                    setTimeout(function () {
+                        obj.el.css({
+                            left: tX,
+                            top: tY
+                        })
+                    }, 100*i)
+                })
+            })
+
+            // for(let i = 0; i < ballNum ; i++){
+            //     setTimeout(() => {
+            //         const b = balls[i];
+
+            //         b.css({
+            //             left: 400 - 25 + 200 * Math.cos(i * angUnit - Math.PI/3),
+            //             top: 300 - 25 + 200 * Math.sin(i * angUnit - Math.PI/3),
+            //         })
+            //     }, 50*i)
+            // }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    
+</head>
+<body>
+    <!-- 取消預設行為 -->
+    <a href="https://tw.yahoo.com/" onclick="return false"></a>
+    <!-- 不建議使用 -->
+    <br>
+    <a href="https://24h.pchome.com.tw/" onclick="event.preventDefault"></a>
+    <br>
+    <a href="https://tw.yahoo.com" onclick="return confirm('要到雅虎嗎?')">yahoo</a>
+    <!-- 按了取消就是 return false -->
+
+    <!-- <div id="info"></div> -->
+
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+        const btn = document.querySelector('button');
+
+        function myClick(abc) {
+            console.log('123');
+            console.log(abc);
+        }
+        
+
+        // 會蓋掉之前的設定
+        // btn.onclick = function (e) {  // 這邊的 event 是自己命名可以亂寫
+        //     console.log('456');
+        //     console.log(e);
+        // }
+    </script>
+</body>
+</html>

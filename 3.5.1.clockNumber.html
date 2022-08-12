@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .rect{
+            position: relative;
+            width: 800px;
+            height: 600px;
+            border: 1px salmon solid;
+            background-color: coral;
+        }
+
+        .ball{
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            color: coral;
+            background-color: aliceblue;
+            border: 2px rgb(255, 213, 208) solid;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+        }
+    </style>
+</head>
+<body>
+        <div class="rect">
+            <!-- <div class="ball">88</div> -->
+        </div>
+
+
+    <div id="info"></div>
+
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+
+        const rect = $('.rect');
+
+        const ballNum = 12;
+        const angUnit = Math.PI*2/ballNum ; //算球跟球之間的角度
+
+        for(let i = 0; i < ballNum ; i++){
+            const b = $(`<div class="ball">${i}</div>`);
+
+            
+
+            b.css({
+                left: 400 - 25 + 200 * Math.cos(i * angUnit),
+                top: 300 - 25 + 200 * Math.sin(i * angUnit),
+                // 400 跟 300 是圓心位置
+            })
+            rect.append(b)
+
+        }
+
+
+
+    </script>
+</body>
+</html>
