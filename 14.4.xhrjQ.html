@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+</head>
+
+<body>
+    <input type="text">
+    <button onclick="loadData()">abc</button>
+    <div id="info"></div>
+
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+        const info = $('#info');
+
+        function loadData() {
+            console.log('-----------1');
+
+            $.get('data/mydata01.txt',function (data) {
+                info.html(data);
+                console.log('-----------2');
+            })
+            console.log('-----------3');
+
+            // jQuery.get( url [, data ] [, success ] [, dataType ] ) 這邊會放這四種參數
+            // data 是形式參數
+        }
+
+
+    </script>
+    
+</body>
+
+</html>
