@@ -1,1 +1,44 @@
-<h1>泥好</h1>
+INSERT INTO `addressbook`
+(`sid`, `name`, `mobile`, `email`, `birthday`, `address`, `createdAt`)
+VALUES
+(NULL, '葉子瑜', '0921126119', 'jessie84121@gmail.com', '1995-12-01', '台北市北投區大同街230號7樓-1', '2022-08-16 12:05:32');
+
+INSERT INTO `addressbook`
+(`sid`, `name`, `mobile`, `email`, `address`, `createdAt`)
+VALUES
+(NULL, '葉子瑜', '0921126119', 'jessie84121@gmail.com', '台北市北投區大同街230號7樓-1', NOW());
+-- 非必填的可以刪掉(上面刪掉生日)
+-- 建立時間可以用 NOW() 的 function
+
+INSERT INTO `addressbook`
+(`name`, `mobile`, `email`, `address`, `createdAt`)
+VALUES
+('葉子瑜', '', 'jessie84121@gmail.com', '台北市北投區大同街230號7樓-1', NOW());
+-- sid 因為有用 AI 所以不小心刪掉沒關係
+-- 必填的不要不填至少要空字串(?
+-- 在 phpMyAdmin 刪除掉的 sid 就不會再回來了
+
+-- 多筆資料輸入法(要加逗點，最後一個分號)
+INSERT INTO `addressbook`
+(`sid`, `name`, `mobile`, `email`, `address`, `createdAt`)
+VALUES
+(NULL, '葉子瑜', '0921126119', 'jessie84121@gmail.com', '台北市北投區大同街230號7樓-1', NOW()),
+(NULL, '葉子瑜', '0921126119', 'jessie84121@gmail.com', '台北市北投區大同街230號7樓-1', NOW()),
+(NULL, '葉子瑜', '0921126119', 'jessie84121@gmail.com', '台北市北投區大同街230號7樓-1', NOW()),
+(NULL, '葉子瑜', '0921126119', 'jessie84121@gmail.com', '台北市北投區大同街230號7樓-1', NOW()),
+(NULL, '葉子瑜', '0921126119', 'jessie84121@gmail.com', '台北市北投區大同街230號7樓-1', NOW()),
+(NULL, '葉子瑜', '0921126119', 'jessie84121@gmail.com', '台北市北投區大同街230號7樓-1', NOW()),
+(NULL, '葉子瑜', '0921126119', 'jessie84121@gmail.com', '台北市北投區大同街230號7樓-1', NOW());
+
+-- 刪除
+DELETE FROM `addressbook` WHERE `sid` = 5
+
+-- 刪除全部
+DELETE FROM `addressbook`
+
+--排序
+SELECT * FROM `addressbook` ORDER BY `name` DESC
+
+--多條件排序(資料一樣的時候會依照第二種排序法排序)
+SELECT * FROM `addressbook` ORDER BY `name` ASC, `sid` DESC
+SELECT * FROM `addressbook` ORDER BY `name`, `sid` DESC --升冪可不寫
