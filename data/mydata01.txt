@@ -42,3 +42,187 @@ SELECT * FROM `addressbook` ORDER BY `name` DESC
 --多條件排序(資料一樣的時候會依照第二種排序法排序)
 SELECT * FROM `addressbook` ORDER BY `name` ASC, `sid` DESC
 SELECT * FROM `addressbook` ORDER BY `name`, `sid` DESC --升冪可不寫
+
+--累加(沒有++的用法)
+UPDATE `products` SET `pages`=`pages` + 1 WHERE sid = 1
+
+-- 合併查詢(JOIN很吃效能)，要寫成下面那樣
+SELECT * FROM `products` JOIN `categories`
+
+
+SELECT * FROM `products` 
+            JOIN `categories`
+            ON `products`.`category_sid` = `categories`.`sid`
+
+-- 用這個查
+-- products 的 FK 對 categories 的 PK
+SELECT `products`.*, `categories`.`name`FROM `products` 
+            JOIN `categories`
+            ON products.`category_sid` = `categories`.`sid`
+
+-- 別名
+SELECT p.*, c.`name`FROM `products` AS p
+            JOIN `categories` AS c
+            ON p.`category_sid` = c.`sid`
+
+-- 也可以省略 AS 但要留一個 space
+SELECT p.*, c.`name` 分類名稱 FROM `products` p
+            JOIN `categories` c
+            ON p.`category_sid` = c.`sid`
+
+-- LEFT JOIN 會列出 FROM 的左邊所有表的資料，不管有沒有對到(FROM XX LEFT JOIN OO)
+SELECT p.*, c.`name` 分類名稱 FROM `products` p
+            LEFT JOIN `categories` c
+            ON p.`category_sid` = c.`sid`
+
+SELECT p.*, c.`name` 分類名稱 FROM `categories` c
+            LEFT JOIN `products` p 
+            ON p.`category_sid` = c.`sid`
+
+-- 取某欄為空值
+SELECT p.*, c.`name` 分類名稱 FROM `categories` c
+            LEFT JOIN `products` p 
+            ON p.`category_sid` = c.`sid`
+            WHERE c.name IS NULL
+
+-- 取某欄不為空值
+SELECT p.*, c.`name` 分類名稱 FROM `categories` c
+            LEFT JOIN `products` p 
+            ON p.`category_sid` = c.`sid`
+            WHERE c.name IS NOT NULL
+
+-- 找不為零的資料
+SELECT p.*, c.`name` 分類名稱 FROM `categories` c
+            LEFT JOIN `products` p 
+            ON p.`category_sid` = c.`sid`
+            WHERE c.`sid` != 0
+
+-- 模糊查詢
+SELECT * FROM `products` WHERE `author` LIKE '陳%'
+-- 只找陳開頭
+-- 這邊要用''，不能用``
+
+SELECT * FROM `products` WHERE `author` LIKE '%陳%'
+-- 只要有陳
+
+--在複數地方查詢
+SELECT * FROM `products` WHERE `author` LIKE '%科技%' OR `bookname` LIKE '%科技%'
+
+-- 一頁呈現幾筆資料
+SELECT * FROM `products` LIMIT 0, 5
+-- 從第 0 筆取 5 筆
+-- 同理第二頁就是 5, 5
+-- 第三頁就是 10, 5
+
+-- 找這幾個 sid
+SELECT * FROM `products` WHERE `sid` IN (6, 2, 3, 100)
+-- 結果會升冪排，不會照你的順序
+
+SELECT * FROM `products` WHERE `sid` IN (6, 2, 3, 100) ORDER BY `sid` DESC
+-- 降冪
+SELECT * FROM `products` WHERE `sid` IN (6, 2, 3, 100) ORDER BY RAND()
+-- 亂數
+
+-- 計算總筆數
+SELECT COUNT(*)
+SELECT COUNT(1)
+-- 兩個都一樣
+
+SELECT COUNT(*) FROM `products`
+
+--加總
+SELECT SUM(`price`) FROM `products` WHERE `sid` IN(2, 3)
+
+SELECT SUM(`price`) FROM `order_details` WHERE `order_sid`=11
+
+SELECT SUM(`price` * `quantity`) FROM `order_details` WHERE `order_sid`=11
+
+-- 群組
+SELECT * FROM `products` GROUP BY `category_sid`
+
+SELECT `category_sid` FROM `products` GROUP BY `category_sid` -- MySQL8 的寫法
+
+-- 群組不能幹嘛所以要搭配 count
+-- 各分類有幾筆
+SELECT `category_sid`, COUNT(1) FROM `products` GROUP BY `category_sid`
+
+-- 各分類有幾筆 + 顯示名稱
+SELECT
+        p.`category_sid`,
+        c.`name` 分類名稱,
+        COUNT(1) 筆數
+    FROM `products` p
+    LEFT JOIN `categories` c
+        ON p.`category_sid` = c.`sid`
+    GROUP BY p.`category_sid`
+
+-- 查詢某一筆訂單的明細
+SELECT o.*, 
+        od.`price` 價錢, 
+        od.`quantity` 數量, 
+        p.`bookname` 書名
+        FROM `orders` o
+    JOIN `order_details` od ON o.sid = od.order_sid
+    JOIN `products` p ON od.product_sid = p.sid
+    WHERE o.sid = 11
+
+-- 查詢某一個會員的明細
+SELECT o.*, 
+        od.`price` 價錢, 
+        od.`quantity` 頁數, 
+        p.`bookname` 書名
+        FROM `orders` o
+    JOIN `order_details` od ON o.sid = od.order_sid
+    JOIN `products` p ON od.product_sid = p.sid
+    WHERE o.member_sid = 1
+
+-- 查詢某一天的訂單
+SELECT* FROM orders WHERE
+    `order_date` > '2016-03-25'
+    -- `order_date` >= '2016-03-25' 可不寫 = (等於)因為不太會在 00:00:00 下訂
+    AND
+    `order_date` < '2016-03-26'
+
+-- 查詢某月的訂單
+SELECT* FROM orders WHERE
+    `order_date` >= '2016-03-01'
+    AND
+    `order_date` < '2016-04-01'
+
+-- 查詢某小時的訂單
+SELECT* FROM orders WHERE
+    `order_date` >= '2016-03-25 12:00:00'
+    AND
+    `order_date` < '2016-03-25 13:00:00'
+
+-- 查詢某年的訂單
+SELECT* FROM orders WHERE
+    `order_date` >= '2016-01-01'
+    AND
+    `order_date` < '2017-01-01'
+
+-- 子查詢
+SELECT `product_sid` FROM `order_details` WHERE `order_sid` = 11
+
+SELECT * FROM `products` WHERE `sid` IN
+(
+    SELECT `product_sid` FROM `order_details` WHERE `order_sid` = 11
+)
+
+-- 子查詢用 JOIN 的時候一定要用別名
+SELECT
+    p.*,
+    od.quantity 頁數,
+    od.price 價格
+FROM `products` p
+JOIN
+(
+    SELECT * FROM `order_details` WHERE `order_sid` = 11
+) od
+ON p.sid = od.product_sid
+
+-- 建立檢視表(方便查詢)
+CREATE VIEW product_cate_view AS
+    SELECT p.*, c.`name` 分類名稱 FROM `products` p
+            JOIN `categories` c
+            ON p.`category_sid` = c.`sid`
